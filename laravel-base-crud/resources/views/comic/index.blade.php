@@ -27,7 +27,7 @@
                         <td>
                             <a class="btn btn-primary mt-5" href="{{route('comic.show', $comic->id)}}" role="button">Vedi</a>
                             <a class="btn btn-warning mt-5" href="{{route('comic.edit', $comic->id)}}" role="button">Modifica</a>
-                            <form method="POST" action="{{route('comic.destroy',['pastum' => $comic->id])}}">
+                            <form method="POST" action="{{route('comic.destroy', $comic->id)}}">
                                 
                                 @csrf
                                 @method('DELETE')

@@ -44,7 +44,7 @@ class ComicController extends Controller
                 'price' => 'required|numeric|min:0',
                 'series' => 'required|min:5',
                 
-                "type" => 'required|min:5',
+                'type' => 'required|min:5',
             ]
         );
         
@@ -76,10 +76,10 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comic $pastum)
+    public function edit(Comic $comic)
     {
         
-        return view('comic.edit', compact('pastum'));
+        return view('comic.edit', compact('comic'));
      
     }
 
@@ -90,7 +90,7 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Comic $pastum)
+    public function update(Request $request,Comic $comic)
     {   
         $request->validate(
             [
@@ -105,11 +105,11 @@ class ComicController extends Controller
         );
         $data = $request->all();
 
-        $pastum->update($data);
+        $comic->update($data);
 
-        $pastum->save();
+        $comic->save();
 
-        return redirect()->route('comic.show', ['pastum' => $pastum->id]);
+        return redirect()->route('comic.show', ['comic' => $comic->id]);
     }
 
     /**
@@ -118,9 +118,9 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comic $pastum)
+    public function destroy(Comic $comic)
     {
-        $pastum->delete();
-        return redirect()->route('comic.index')->with('status', 'Elemento correttamene cancellato');
+        $comic->delete();
+        return redirect()->route('comic.index')->with('status', 'Elemento correttamente cancellato');
     }
 }
